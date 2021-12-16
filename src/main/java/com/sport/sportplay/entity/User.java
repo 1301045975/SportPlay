@@ -1,5 +1,9 @@
 package com.sport.sportplay.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="User对象", description="")
 public class User {
     private Integer id;
     private String username;
@@ -9,6 +13,7 @@ public class User {
     private boolean state;
 
     public User(Integer id, String username, String password, String email, String role, boolean state) {
+
         this.id = id;
         this.username = username;
         this.password = password;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sport.sportplay.dao.UserDao">
+    <!--- 根据用户id查询用户信息，接收一个integer类型的参数，并将返回结果映射 -->
+    <select id="getAllUser" resultType="com.sport.sportplay.entity.User">
+        select * from easyuser
+    </select>
+
+    <select id="getOneUser" resultType="com.sport.sportplay.entity.User">
+        select * from easyuser WHERE id=#{id}
+    </select>
+
+    <!--<insert id="addUser" parameterType="com.sport.sportplay.entity.User">
+        insert into easyuser (username,password,email,role,state) values (#{username},#{password},#{email},#{role},#{state})
+    </insert>-->
+
+</mapper>
