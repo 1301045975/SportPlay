@@ -3,10 +3,12 @@ package com.sport.sportplay.dao;
 
 import com.sport.sportplay.entity.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
+@Repository
+//@Mapper
 public interface UserDao {
     //@Select("SELECT * FROM easyuser")
     List<User> getAllUser();
