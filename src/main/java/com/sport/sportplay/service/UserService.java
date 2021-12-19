@@ -23,13 +23,13 @@ public class UserService {
         return userDao.getOneUser(id);
     }
 
-    public Integer addUser(String username,String password,String email,String role,boolean state){
-        return userDao.addUser(username,password,email,role,state);
+    public int addUser(User user){
+        return userDao.addUser(user);
     }
-    public Integer updateUser(User user){
+    public int updateUser(User user){
         return userDao.updateUser(user);
     }
-    public Integer deleteUser(Integer id){
+    public int deleteUser(Integer id){
         return userDao.deleteUser(id);
     }
 }

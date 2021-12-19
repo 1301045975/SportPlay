@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@Api(value = "测试接口", tags = "用户管理相关的接口", description = "用户测试接口")
+@Api(value = "测试接口", tags = "用户的增删改查")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -36,21 +36,21 @@ public class UserController {
 
     //新增用户
     @PostMapping(value = "/addUser")
-    @ApiImplicitParam(name = "user", value = "新增用户数据")
-    //说明是什么方法(可以理解为方法注释)
-    @ApiOperation(value = "添加用户")
-    public String addUser(String username,String password,String email,String role,boolean state){
-        userService.addUser(username,password,email,role,state);
+    @ApiOperation(value = "添加用户",notes = "填写信息添加用户")
+    public String addUser(User user){
+        userService.addUser(user);
         return "add success!";
     }
 
     @PostMapping(value = "/updateUser")
+    @ApiOperation(value = "修改用户",notes = "根据用户的id修改用户信息")
     public String updateUser(User user){
         userService.updateUser(user);
         return "update success!";
     }
 
     @PostMapping(value = "/deleteUser")
+    @ApiOperation(value = "删除用户",notes = "根据用户id删除该用户信息")
     public String deleteUser(Integer id){
         userService.deleteUser(id);
         return "delete success!";

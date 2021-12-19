@@ -15,14 +15,15 @@ public interface UserDao {
 
     User getOneUser(Integer id);
 
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into easyuser (username,password,email,role,state) values (#{username},#{password},#{email},#{role},#{state})")
-    Integer addUser(String username,String password,String email,String role,boolean state);
+    //@Options(useGeneratedKeys = true, keyProperty = "id")
+    //@Insert("insert into easyuser (username,password,email,role,state) values (#{username},#{password},#{email},#{role},#{state})")
+    @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
+    int addUser(User user);
 
-    @Update("update easyuser set name=#{name},password=#{password},email=#{email},role=#{role},state=#{state} where id=#{id}")
-    Integer updateUser(User user);
+    //@Update("update easyuser set name=#{name},password=#{password},email=#{email},role=#{role},state=#{state} where id=#{id}")
+    int updateUser(User user);
 
-    @Delete("delete from easyuser where id=#{id}")
-    Integer deleteUser(Integer id);
+    //@Delete("delete from easyuser where id=#{id}")
+    int deleteUser(Integer id);
 
 }

@@ -6,12 +6,20 @@
         select * from easyuser
     </select>
 
+    <!--根据用户ID查询某一个用户的个人信息-->
     <select id="getOneUser" resultType="com.sport.sportplay.entity.User">
         select * from easyuser WHERE id=#{id}
     </select>
-
-    <!--<insert id="addUser" parameterType="com.sport.sportplay.entity.User">
-        insert into easyuser (username,password,email,role,state) values (#{username},#{password},#{email},#{role},#{state})
-    </insert>-->
-
+    <!--添加一个用户-->
+    <insert id="addUser" parameterType="com.sport.sportplay.entity.User">
+        insert into easyuser(username,password,email,role,state) values (#{username},#{password},#{email},#{role},#{state})
+    </insert>
+    <!--根据id删除该用户-->
+    <delete id="deleteUser" parameterType="com.sport.sportplay.entity.User">
+        delete from easyuser where id=#{id}
+   </delete>
+    <!--根据id修改用户信息-->
+   <update id="updateUser" parameterType="com.sport.sportplay.entity.User">
+        update easyuser set easyuser.username=#{username},easyuser.password=#{password},easyuser.email=#{email},easyuser.role=#{role},easyuser.state=#{state} where easyuser.id=#{id}
+   </update>
 </mapper>
