@@ -2,23 +2,49 @@ package com.sport.sportplay.controller;
 
 import com.sport.sportplay.entity.User;
 import com.sport.sportplay.service.UserService;
+import com.sport.sportplay.util.Msg;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api")
 @Api(value = "测试接口", tags = "用户的增删改查")
 public class UserController {
     @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
     private UserService userService;
+
+    //登录
+    @PostMapping("/login")
+    @ApiOperation(value = "用户登录", notes = "登录")
+    public Msg login(@RequestBody User user){
+        User u = userService.loginUser(user);
+        if(u != null){
+            String token = UUID.randomUUID().toString().replaceAll("-","");
+            //将用户的ID信息存入redis缓存，并设置一小时的过期时间
+            stringRedisTemplate.opsForValue().set(token,String.valueOf(u.getId()),3600, TimeUnit.SECONDS);
+            return Msg.success().add("token",token).add("info","登陆成功");
+        }else{
+            return Msg.fail().add("info","登陆失败");
+        }
+    }
+    @PostMapping("/other")
+    public Msg other() {
+        return Msg.success().add("info", "该接口是来测试的");
+    }
 
     //查询全部用户
     @GetMapping(value = "/selectAll")

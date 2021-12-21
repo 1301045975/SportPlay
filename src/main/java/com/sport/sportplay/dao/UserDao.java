@@ -15,6 +15,10 @@ public interface UserDao {
 
     User getOneUser(Integer id);
 
+    //登录
+    //@Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
+    public User loginUser(User user);
+
     //@Options(useGeneratedKeys = true, keyProperty = "id")
     //@Insert("insert into easyuser (username,password,email,role,state) values (#{username},#{password},#{email},#{role},#{state})")
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")

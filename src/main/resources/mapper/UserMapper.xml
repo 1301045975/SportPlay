@@ -5,6 +5,9 @@
     <select id="getAllUser" resultType="com.sport.sportplay.entity.User">
         select * from easyuser
     </select>
+    <select id="loginUser" resultType="com.sport.sportplay.entity.User">
+        SELECT * FROM easyuser WHERE username=#{username} AND password=#{password}
+    </select>
 
     <!--根据用户ID查询某一个用户的个人信息-->
     <select id="getOneUser" resultType="com.sport.sportplay.entity.User">

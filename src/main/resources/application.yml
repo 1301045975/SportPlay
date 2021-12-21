@@ -5,9 +5,27 @@ spring:
     url: jdbc:mysql://localhost:3306/easyproject?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: root
     password: 133699
+  #配置redis
+  redis:
+    host: localhost
+    port: 6379
+    password: China123aA@swjtu
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.demo.model
+  #开启驼峰式命名
+  configuration:
+    map-underscore-to-camel-case: true
 server:
   port: 8090
+
+
+config:
+  jwt:
+    # header:凭证(校验的变量名)
+    header: token
+    # expire:有效期1天(单位:s)
+    expire: 3600
+    # secret:秘钥(普通字符串)
+    secret: aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC91LzM2ODE4Njg=
