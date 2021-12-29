@@ -17,10 +17,6 @@ public class UserService {
         return userDao.getAllUser();
     }
 
-    public User loginUser(User user){
-        return userDao.loginUser(user);
-    }
-
     public User getOneUser(Integer id){
         return userDao.getOneUser(id);
     }

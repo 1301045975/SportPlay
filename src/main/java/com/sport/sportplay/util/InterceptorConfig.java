@@ -17,7 +17,7 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //此处配置拦截路径
-        registry.addInterceptor(paramInterceptor).addPathPatterns("/api/**").excludePathPatterns("/api/login/**");
+        registry.addInterceptor(paramInterceptor).addPathPatterns("/user/**").excludePathPatterns("/login");
 
     }
 
